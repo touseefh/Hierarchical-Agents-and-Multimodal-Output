@@ -1,4 +1,4 @@
-# Lesson 6: Hierarchical Agents and Multimodal Output
+# Hierarchical Agents and Multimodal Output
 
 This final lesson culminates the course by building a sophisticated, multi-agent system that produces multimodal output (text and audio). It introduces hierarchical agent design, structured data schemas with Pydantic, and text-to-speech (TTS) generation.
 
