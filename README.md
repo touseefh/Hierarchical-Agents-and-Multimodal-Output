@@ -1,18 +1,18 @@
 # Hierarchical Agents and Multimodal Output
 
-This lesson culminates the course by building a sophisticated, multi-agent system that produces multimodal output (text and audio). It introduces hierarchical agent design, structured data schemas with Pydantic, and text-to-speech (TTS) generation.
+Multi-agent system that produces multimodal output (text and audio). It introduces hierarchical agent design, structured data schemas with Pydantic, and text-to-speech (TTS) generation.
 
 ## Key Concepts
 
-- **Pydantic Schemas for Structured Output**: Instead of relying on prompts to format Markdown, this lesson uses Pydantic models (`NewsStory`, `AINewsReport`) to define a strict, typed schema for the agent's output. This ensures the data is structured, validated, and easier to work with programmatically.
+- **Pydantic Schemas for Structured Output**: Instead of relying on prompts to format Markdown, this uses Pydantic models (`NewsStory`, `AINewsReport`) to define a strict, typed schema for the agent's output. This ensures the data is structured, validated, and easier to work with programmatically.
 
 - **Multimodal Output (Text-to-Speech)**: A new tool, `generate_podcast_audio`, is introduced. This tool leverages the Gemini API's TTS capabilities (`gemini-2.5-flash-preview-tts`) to convert a text script into a multi-speaker WAV audio file.
 
-- **Hierarchical Agent Design**: This lesson implements a two-agent system:
+- **Hierarchical Agent Design**: This implements a two-agent system:
     1.  **`root_agent` (AI News Podcast Producer)**: The main coordinator that orchestrates the entire workflow, from research to content formatting.
     2.  **`podcaster_agent` (Audio Generation Specialist)**: A specialized, single-purpose agent whose only job is to take a script and generate audio using the `generate_podcast_audio` tool. The `root_agent` delegates the audio generation task to this agent using an `AgentTool`.
 
-- **Advanced Callback Logic**: The callback guardrails from Lesson 5 are refined:
+- **Advanced Callback Logic**: The callback guardrails are refined:
     - `filter_news_sources_callback` is changed from a blocklist to a **whitelist**, ensuring that the agent *only* sources news from a pre-approved list of high-quality domains (`WHITELIST_DOMAINS`).
     - `enforce_data_freshness_callback` is added to automatically append a time filter to search queries, ensuring the news is recent.
 
@@ -43,4 +43,4 @@ The `root_agent`'s instructions are the most complex yet. It is tasked with a co
 
 ### Running the Agent
 
-The notebook allows you to run this multi-agent system. After the agent completes its work, the notebook includes cells to both display the final Markdown report and play the generated `ai_today_podcast.wav` audio file, showcasing the full multimodal output.
+The notebook allows us to run this multi-agent system. After the agent completes its work, the notebook includes cells to both display the final Markdown report and play the generated `ai_today_podcast.wav` audio file, showcasing the full multimodal output.
